@@ -8,12 +8,16 @@ import {
 import { Users } from './user.entity';
 import { aesDecrypt, aesEncrypt } from './encryption';
 import { PIIDataConfig } from './piiDataConfig';
+import { Articles } from './article.entity';
+import { Comments } from './comments.entity';
 
 @EventSubscriber()
-export class UserListener implements EntitySubscriberInterface {
-  listenTo() {
-    return Users;
-  }
+export class UserListener
+  implements EntitySubscriberInterface<Users | Articles>
+{
+  // listenTo() {
+  //   return () => [Users, Articles, Comments];
+  // }
 
   beforeInsert(event: InsertEvent<any>) {
     console.log(event.entity);

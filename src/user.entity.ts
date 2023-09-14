@@ -1,5 +1,6 @@
 // src/entities/user.entity.ts
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, AfterLoad } from 'typeorm';
+import { aesDecrypt } from './encryption';
 
 @Entity()
 export class Users {
